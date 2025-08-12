@@ -53,8 +53,8 @@ export function addCompany(company: Company): Company {
   return company
 }
 
-export function updateCompany(index: number, updatedCompany: Company): Company {
-  sampleCompanies[index] = { ...updatedCompany }
+export function updateCompany(index: number, updatedCompany: Partial<Company>): Company {
+  sampleCompanies[index] = { ...sampleCompanies[index], ...updatedCompany }
   return sampleCompanies[index]
 }
 
