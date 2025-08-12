@@ -1,5 +1,5 @@
 import { AppError } from '../../middlewares/errorHandler'
-import { addCompany, getCompanies } from '../../utils/database'
+import { addCompany, getCompanies, getCompany } from '../../utils/database'
 import { ErrorMessages } from '../../utils/errorMessage'
 import { HttpStatusCode } from '../../utils/statusCodes'
 import { Company } from './company.interface'
@@ -18,6 +18,14 @@ export async function createCompany(company: CompanyRequestDto): Promise<Company
   try {
     const companyInsertBody: Company = { ...company, creationDate: company.creationDate.toString() }
     return addCompany(companyInsertBody)
+  } catch {
+    throw new AppError(HttpStatusCode.INTERNAL_SERVER_ERROR, ErrorMessages.INTERNAL_SERVER_ERROR)
+  }
+}
+
+export async function getOneCompany(id: number): Promise<CompanyResponseDto> {
+  try {
+    return getCompany(id)
   } catch {
     throw new AppError(HttpStatusCode.INTERNAL_SERVER_ERROR, ErrorMessages.INTERNAL_SERVER_ERROR)
   }

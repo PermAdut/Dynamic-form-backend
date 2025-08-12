@@ -57,3 +57,7 @@ export function updateCompany(index: number, updatedCompany: Company): Company {
   sampleCompanies[index] = { ...updatedCompany }
   return sampleCompanies[index]
 }
+
+export function getCompany(id: number) {
+  return sampleCompanies[id]
+}

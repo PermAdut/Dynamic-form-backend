@@ -5,4 +5,5 @@ const companyRouter = Router()
 
 companyRouter.route('/api/v1.0/companies').get(companyController.getAll)
 companyRouter.route('/api/v1.0/companies/create').post(companyController.create)
+companyRouter.route('/api/v1.0/companies/:id').get(companyController.getOne)
 export default companyRouter
