@@ -2,6 +2,7 @@ import express, { Application } from 'express'
 import cors from 'cors'
 import './common/env'
 import errorHandler from './middlewares/errorHandler'
+import companyRouter from './modules/Companies/company.routes'
 
 const corsOptions = {
   origin: 'http://localhost:5173',
@@ -14,6 +15,7 @@ const app: Application = express()
 
 app.use(cors(corsOptions))
 app.use(express.json())
+app.use(companyRouter)
 app.use(errorHandler)
 
 export default app

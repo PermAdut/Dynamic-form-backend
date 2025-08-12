@@ -1,10 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
+import { CompanyResponseDto } from './dto/company.response.dto'
+import { getAllCompanies } from './company.service'
+import { HttpStatusCode } from '../../utils/statusCodes'
 
-const getAll = async (req: Request, res: Response, next: NextFunction) => {
+const getAll = async (req: Request<object, null, CompanyResponseDto, null>, res: Response, next: NextFunction) => {
   try {
-    // use dummy data for now
-    const users = ['John Doe', 'Jane Doe', 'John Smith', 'Jane Smith']
-    res.status(200).json(users)
+    const companies = await getAllCompanies()
+    res.status(HttpStatusCode.OK).json(companies)
   } catch (error) {
     next(error)
   }

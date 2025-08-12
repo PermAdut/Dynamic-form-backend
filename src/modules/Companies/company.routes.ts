@@ -1,9 +1,8 @@
 import { Router } from 'express'
-import userController from './controller'
+import companyController from './company.controller'
 
-const router = Router()
+const companyRouter = Router()
 
-// define routes
-router.route('/').get(userController.getAll)
+companyRouter.route('/api/v1.0/companies').get(companyController.getAll)
 
-export default router
+export default companyRouter
