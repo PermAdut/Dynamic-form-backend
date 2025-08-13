@@ -1,12 +1,12 @@
 import express, { Application } from 'express'
 import cors from 'cors'
 import './common/env'
-import errorHandler from './middlewares/errorHandler'
+import errorHandler from './middlewares/error.middleware'
 import companyRouter from './modules/Companies/company.routes'
 
 const corsOptions = {
-  origin: 'http://localhost:5173',
-  methods: 'GET,POST,PUT,DELETE',
+  origin: process.env.ORIGINS,
+  methods: 'GET,POST,PUT,DELETE,PATCH',
   allowedHeaders: 'Content-Type,Authorization,Bearer',
   credentials: true,
 }
