@@ -27,12 +27,12 @@ const create = async (
 }
 
 const getOne = async (
-  req: Request<{ id: number }, CompanyResponseDto, null, null>,
+  req: Request<{ id: string }, CompanyResponseDto, null, null>,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const company = await getOneCompany(req.params.id)
+    const company = await getOneCompany(parseInt(req.params.id))
     res.status(HttpStatusCode.OK).json(company)
   } catch (err) {
     next(err)
@@ -40,12 +40,12 @@ const getOne = async (
 }
 
 const updateOne = async (
-  req: Request<{ id: number }, CompanyResponseDto, Partial<CompanyRequestDto>, null>,
+  req: Request<{ id: string }, CompanyResponseDto, Partial<CompanyRequestDto>, null>,
   res: Response,
   next: NextFunction,
 ) => {
   try {
-    const company = await updateOneCompany(req.params.id, req.body)
+    const company = await updateOneCompany(parseInt(req.params.id), req.body)
     res.status(HttpStatusCode.OK).json(company)
   } catch (err) {
     next(err)
