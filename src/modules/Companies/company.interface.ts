@@ -33,7 +33,7 @@ export interface Project {
 
 export interface Company {
   name: string
-  creationDate: string
+  creationDate: Date
   telephone?: string
   country: Country
   isGlobal: boolean
